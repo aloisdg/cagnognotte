@@ -4,7 +4,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cagnognotte</title>
-    <!-- <link href="tailwind.min.css" rel="stylesheet" /> -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
@@ -24,7 +23,17 @@
       <button id="contribute">Participer</button>
     </div>
     <div>
-        <p>PS: Si vous avez des bon plans GPU, je suis preneur.</p>
+      <p>
+        Vous pouvez aussi joindre un petit mot à votre participation en envoyant
+        un mail à
+        <a href="mailto:annivkim@protonmail.com">annivkim@protonmail.com</a>.
+        C'est une boîte mail que j'ai ouvert pour l'occasion et dont les accès
+        lui seront transmis le jour de son anniversaire.
+      </p>
+    </div>
+
+    <div>
+      <p>PS: Si vous avez des bon plans GPU, je suis preneur.</p>
     </div>
     <!-- <footer>coder avec amour par alois</footer> -->
 
@@ -47,9 +56,9 @@
             <td><span style="font-size: 2rem;">${i + 1}</span></td>
             <td><img src="${step.image}" alt="${step.name}'s image" /></td>
             <td>${step.name}</td>
-            <td style="text-align: right;"><a href="${step.link}" style="font-size: 2rem;">${
-              step.price.toFixed(2)
-            }</a></td>
+            <td style="text-align: right;"><a href="${
+              step.link
+            }" style="font-size: 2rem;">${step.price.toFixed(2)}</a></td>
           </tr>`
           )
           .join("");
@@ -86,7 +95,7 @@
           },
         ],
         fillers: [
-        {
+          {
             name: "Crusader King III",
             price: 49.99,
             image:
@@ -108,11 +117,12 @@
             link: "https://www.lavantgardiste.com/chillwear/5915-chaussettes-cocooning-en-moumoute.html",
           },
           {
-              name: "Vampire: la Mascarade",
-              price: 55,
-              link: "https://www.arkhane-asylum.fr/product/vampire-la-mascarade-5e-edition/",
-              image: "https://www.arkhane-asylum.fr/wp-content/uploads/2019/07/Capture-d%E2%80%99e%CC%81cran-2019-07-16-a%CC%80-16.22.17.png"
-          }
+            name: "Vampire: la Mascarade",
+            price: 55,
+            link: "https://www.arkhane-asylum.fr/product/vampire-la-mascarade-5e-edition/",
+            image:
+              "https://www.arkhane-asylum.fr/wp-content/uploads/2019/07/Capture-d%E2%80%99e%CC%81cran-2019-07-16-a%CC%80-16.22.17.png",
+          },
         ],
         contributionLink: "https://paypal.me/aloisdg?locale.x=fr_FR",
       };
@@ -158,9 +168,10 @@
       <p>
         Nous avons actuellement un pot commun de ${currentTotal}€. Il nous manque encore ${
         pool.steps[0].price - currentTotal
-      }€ avant le premier palier. Nous avons déjà fait ${
-        ((currentTotal / pool.steps[0].price) * 100).toFixed(2)
-      }% du chemin ! 
+      }€ avant le premier palier. Nous avons déjà fait ${(
+        (currentTotal / pool.steps[0].price) *
+        100
+      ).toFixed(2)}% du chemin ! 
         </p>
         `;
 
