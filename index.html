@@ -1,0 +1,172 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cagnognotte</title>
+    <!-- <link href="tailwind.min.css" rel="stylesheet" /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>Cagnognotte</header>
+
+    <main id="mainElement"></main>
+    <div style="display: grid; place-items: center">
+      <button id="contribute">Participer</button>
+    </div>
+    <div>
+        <p>PS: Si vous avez des bon plans GPU, je suis preneur.</p>
+    </div>
+    <!-- <footer>coder avec amour par alois</footer> -->
+
+    <script>
+      //         Titre de la cagnotte
+      // Image d'illustration
+      // Photo de OP
+      // Nom de OP
+      // description
+
+      // Somme actuellement eu
+      // Somme visé + palié
+      // 100% en cours
+
+      const buildRows = (list) =>
+        list
+          .map(
+            (step, i) => `
+        <tr>
+            <td><span style="font-size: 2rem;">${i + 1}</span></td>
+            <td><img src="${step.image}" alt="${step.name}'s image" /></td>
+            <td>${step.name}</td>
+            <td style="text-align: right;"><a href="${step.link}" style="font-size: 2rem;">${
+              step.price.toFixed(2)
+            }</a></td>
+          </tr>`
+          )
+          .join("");
+
+      const pool = {
+        name: "Cagnotte pour l'anniversaire de Kim",
+        picture: "",
+        hero: {
+          name: "Kim",
+          picture: "kim.png",
+        },
+        description: `L'anniversaire de Kim est le 2 novembre. Dans la mesure où plusieurs personnes m'ont demandé ce qui lui ferait vraiment plaisir, j'ai décidé d'ouvrir une cagnotte afin de rallier toutes ses bonnes volontés. Chaque euro compte car c'est avant tout l'attention qui prime. 1€ comme 10.000 feront avancer la cagnotte. Dans la mesure où j'ignore le nombre de participant et leur participation, j'ai mis en place un système de palier. Plus remplie sera la cagnotte, meilleur sera le cadeau final. Cette cagnotte est surprise. Merci pour votre participation!`,
+        steps: [
+          {
+            name: "Gigabyte Radeon RX 6600 EAGLE",
+            price: 550.99,
+            image:
+              "https://www.topachat.com/boutique/img/in/in2001/in20011299/in2001129901.jpg",
+            link: "https://www.topachat.com/pages/detail2_cat_est_micro_puis_rubrique_est_wgfx_pcie_puis_ref_est_in20011299.html",
+          },
+          {
+            name: "MSI Radeon RX 6700 XT MECH 2X",
+            price: 807.49,
+            image:
+              "https://www.topachat.com/boutique/img/in/in2000/in20008266/in2000826601.jpg",
+            link: "https://www.topachat.com/pages/detail2_cat_est_micro_puis_rubrique_est_wgfx_pcie_puis_ref_est_in20008266.html",
+          },
+          {
+            name: "Gigabyte Radeon RX 6800 XT GAMING OC",
+            price: 1315.99,
+            image:
+              "https://www.topachat.com/boutique/img/in/in2000/in20006556/in2000655601.jpg",
+            link: "https://www.topachat.com/pages/detail2_cat_est_micro_puis_rubrique_est_wgfx_pcie_puis_ref_est_in20006556.html",
+          },
+        ],
+        fillers: [
+        {
+            name: "Crusader King III",
+            price: 49.99,
+            image:
+              "https://cdn.akamai.steamstatic.com/steam/apps/1158310/header.jpg?t=1632156708",
+            link: "https://store.steampowered.com/app/1158310/Crusader_Kings_III/",
+          },
+          {
+            name: "Chapka de Ski Adulte Noof Ivoire",
+            price: 17,
+            image:
+              "https://contents.mediadecathlon.com/p1243896/k$e2a628dc026a8b9ba60e3ce125312d9c/sq/chapka-de-ski-adulte-noof-ivoire.jpg?format=auto&f=200x200",
+            link: "https://www.decathlon.fr/p/chapka-de-ski-adulte-noof-ivoire/_/R-p-170513",
+          },
+          {
+            name: "Chaussettes en moumoutte",
+            price: 9.95,
+            image:
+              "https://www.lavantgardiste.com/28005-large_default/chaussettes-cocooning-en-moumoute.jpg",
+            link: "https://www.lavantgardiste.com/chillwear/5915-chaussettes-cocooning-en-moumoute.html",
+          },
+          {
+              name: "Vampire: la Mascarade",
+              price: 55,
+              link: "https://www.arkhane-asylum.fr/product/vampire-la-mascarade-5e-edition/",
+              image: "https://www.arkhane-asylum.fr/wp-content/uploads/2019/07/Capture-d%E2%80%99e%CC%81cran-2019-07-16-a%CC%80-16.22.17.png"
+          }
+        ],
+        contributionLink: "https://paypal.me/aloisdg?locale.x=fr_FR",
+      };
+
+      const currentTotal = 250;
+      mainElement.innerHTML = `
+        <div style="width: 100%; text-align: center;"><h1>${
+          pool.name
+        }</h1></div>
+        <div style="width: 100%; display: grid; place-items: center;">
+        <img src="${pool.hero.picture}" alt="${
+        pool.hero.name
+      }" style="border-radius: 9999px;width: 12rem;height: 12rem;" />
+        </div>
+        <p>${pool.description}</p>
+        <hr /><table>
+        <thead>
+          <tr>
+            <th>Palier</th>
+            <th>Image</th>
+            <th>Cadeau</th>
+            <th>Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${buildRows(pool.steps)}
+        </tbody>
+      </table>
+      <p>Si jamais la cagnotte se retrouve entre deux paliers, j'utiliserai cet argent pour ajouter au cadeau des présents de la liste suivante.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Présent</th>
+            <th>Image</th>
+            <th>Cadeau</th>
+            <th>Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${buildRows(pool.fillers)}
+        </tbody>
+      </table>
+      <p>
+        Nous avons actuellement un pot commun de ${currentTotal}€. Il nous manque encore ${
+        pool.steps[0].price - currentTotal
+      }€ avant le premier palier. Nous avons déjà fait ${
+        ((currentTotal / pool.steps[0].price) * 100).toFixed(2)
+      }% du chemin ! 
+        </p>
+        `;
+
+      contribute.onclick = () => {
+        window.location.href = pool.contributionLink;
+      };
+    </script>
+  </body>
+</html>
